@@ -1,38 +1,369 @@
-.App {
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: #0f0f0f;
+}
+
+
+.auth-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #1e1e2f, #121212);
+}
+
+.auth-card {
+  background: #1f1f2e;
+  padding: 40px;
+  width: 350px;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.auth-card h2 {
+  margin-bottom: 20px;
+  color: #fff;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.auth-card input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  background: #2a2a3d;
+  color: #fff;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.auth-card button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+  border: none;
+  border-radius: 10px;
+  background: #6c63ff;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.auth-card button:hover {
+  background: #574bff;
+}
+
+.auth-card p {
+  margin-top: 15px;
+  color: #aaa;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+
+.app {
+  display: flex;
+  height: 100vh;
+  transition: 0.3s;
+}
+
+.app.dark {
+  background: #111827;
+  color: #fff;
+}
+
+.app.light {
+  background: #f4f6fb;
+  color: #111;
+}
+
+
+.sidebar {
+  width: 300px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.app.light .sidebar {
+  border-right: 1px solid #ddd;
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  margin-bottom: 25px;
+}
+
+.theme-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.new-btn {
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  background: #6c63ff;
+  color: white;
+  cursor: pointer;
+  margin-bottom: 15px;
+  transition: 0.3s;
+}
+
+.new-btn:hover {
+  background: #574bff;
+}
+
+.search {
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  margin-bottom: 15px;
+}
+
+.tabs {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.tabs button {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  background: transparent;
+  color: inherit;
+}
+
+.active-tab {
+  background: #6c63ff;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.logout-btn {
+  margin-bottom: 15px;
+  padding: 8px;
+  border-radius: 8px;
+  border: none;
+  background: crimson;
+  color: white;
+  cursor: pointer;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.notes-list {
+  overflow-y: auto;
+  flex: 1;
+}
+
+
+.note-card {
+  padding: 12px;
+  margin-bottom: 10px;
+  border-radius: 12px;
+  cursor: pointer;
+  position: relative;
+  background: rgba(255, 255, 255, 0.05);
+  transition: 0.3s;
+}
+
+.app.light .note-card {
+  background: #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.note-card:hover {
+  transform: translateY(-2px);
+}
+
+.note-card.active {
+  background: #6c63ff;
+  color: white;
+}
+
+.note-card small {
+  display: block;
+  margin-top: 5px;
+  font-size: 11px;
+  opacity: 0.7;
+}
+
+.pin-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+
+.restore-btn {
+  margin-top: 5px;
+  padding: 8px 15px;
+  background: #10b981; 
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.restore-btn:hover {
+  background: #059669; 
+}
+
+
+.editor {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.title-input {
+  font-size: 22px;
+  font-weight: bold;
+  border: none;
+  outline: none;
+  margin-bottom: 20px;
+  background: transparent;
+  color: inherit;
+}
+
+.editor textarea {
+  flex: 1;
+  resize: none;
+  border-radius: 15px;
+  padding: 20px;
+  font-size: 15px;
+  border: none;
+  outline: none;
+  transition: 0.3s;
+}
+
+.app.dark .editor textarea {
+  background: #1f2937;
+  color: white;
+}
+
+.app.light .editor textarea {
+  background: white;
+  color: black;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+
+.editor-actions {
+  margin-top: 20px;
+  display: flex;
+  gap: 15px;
+}
+
+.save-btn {
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  background: #10b981; 
+  color: white;
+  cursor: pointer;
+}
+
+.delete-btn {
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  background: crimson;
+  color: white;
+  cursor: pointer;
+}
+
+.empty {
+  margin: auto;
+  font-size: 20px;
+  opacity: 0.5;
+}
+
+
+@media (max-width: 768px) {
+  .app {
+    flex-direction: column;
   }
-  to {
-    transform: rotate(360deg);
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    flex-direction: row;
+    overflow-x: auto;
+    padding: 10px;
+  }
+
+  .sidebar-header {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 10px;
+  }
+
+  .sidebar-header h2 {
+    font-size: 18px;
+  }
+
+  .new-btn,
+  .search,
+  .tabs,
+  .logout-btn {
+    flex: 1 0 auto;
+    margin: 5px;
+  }
+
+  .notes-list {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    gap: 10px;
+    height: auto;
+    margin-top: 10px;
+  }
+
+  .note-card {
+    min-width: 180px;
+    flex-shrink: 0;
+  }
+
+  .editor {
+    padding: 20px;
+  }
+
+  .title-input {
+    font-size: 18px;
+  }
+
+  .editor textarea {
+    font-size: 14px;
+    padding: 15px;
+  }
+
+  .editor-actions {
+    flex-direction: column;
+    gap: 10px;
   }
 }
